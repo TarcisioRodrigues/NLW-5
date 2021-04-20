@@ -5,22 +5,27 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
 import wateringImg from '../assets/watering.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+import { Entypo } from '@expo/vector-icons';
 export default function Welcome() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
-        Gerencie{'/n'} suas plantas{'/n'} de forma rápida
+        Gerencie{'\n'} suas plantas{'\n'} de forma rápida
       </Text>
-      <Image source={wateringImg} style={styles.image} />
+      <Image source={wateringImg} style={styles.image} resizeMode="contain" />
       <Text style={styles.subtitle}>
         Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
         sempre
       </Text>
       <TouchableOpacity style={styles.button} activeOpacity={0.7}>
-        <Text style={styles.buttonText}>|</Text>
+        <Text>
+          <Entypo name="chevron-thin-right" style={styles.buttonIcon} />
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -30,6 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
     fontSize: 32,
@@ -49,15 +55,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 16,
-    marginBottom: 10,
+    marginBottom: 20,
+    width: 56,
     height: 56,
     paddingHorizontal: 10,
   },
   image: {
-    width: 292,
-    height: 284,
+    height: Dimensions.get('window').width * 0.7,
   },
-  buttonText: {
+  buttonIcon: {
     color: colors.white,
     fontSize: 24,
   },
