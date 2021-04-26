@@ -1,7 +1,6 @@
 import React from 'react';
-import Welcome from './src/Pages/Welcome';
-
 import AppLoading from 'expo-app-loading';
+import Routes from './src/routes';
 
 import {
   useFonts,
@@ -18,5 +17,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <Welcome />;
+  return <Routes />;
 }
