@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { Header } from '../components/header';
+import { Header } from '../components/Header';
 import { Load } from '../components/Load';
 import { EnviromentButton } from '../components/EnviromentButton';
 import api from '../services/api';
@@ -59,7 +59,6 @@ export function PlantSelect() {
       setPlants(data);
       setFilteredPlants(data);
     }
-
     setLoading(false);
     setLoadingMore(false);
   }
@@ -87,7 +86,6 @@ export function PlantSelect() {
   useEffect(() => {
     fetchPlants();
   }, []);
-
   if (loading) return <Load />;
   return (
     <View style={styles.container}>
@@ -117,7 +115,6 @@ export function PlantSelect() {
           renderItem={({ item }) => <PlantCardPrimary data={item} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
-          contentContainerStyle={styles.contentContainerStyle}
           onEndReachedThreshold={0.1}
           onEndReached={({ distanceFromEnd }) =>
             handleFetchMore(distanceFromEnd)
@@ -168,5 +165,4 @@ const styles = StyleSheet.create({
     marginLeft: 32,
     marginVertical: 32,
   },
-  contentContainerStyle: {},
 });
