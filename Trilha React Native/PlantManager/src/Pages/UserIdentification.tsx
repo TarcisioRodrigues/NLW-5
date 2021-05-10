@@ -7,10 +7,12 @@ import {
   View,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button } from '../components/button';
 // import { Container } from './styles';
 
@@ -32,7 +34,9 @@ export function UserIdentification() {
     setIsFilled(!!value);
     setName(value);
   }
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (!name) return Alert.alert('Me diz como chamar você ');
+    await AsyncStorage.setItem('@plantmanager:user', name);
     navigation.navigate('Confirmation');
   }
   return (
