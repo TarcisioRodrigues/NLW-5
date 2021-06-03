@@ -23,6 +23,8 @@ type EpisodeProps = {
   episode: Episodes;
 };
 export default function Episode({ episode }) {
+  const router = useRouter();
+
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
@@ -56,11 +58,26 @@ export default function Episode({ episode }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await api.get('episodes', {
+    params: {
+      _limit: 2,
+      _sort: 'published_at',
+      order: 'desc',
+    },
+  });
+  const paths = data.map((episode) => {
+    return {
+      params: {
+        slug: episode.id,
+      },
+    };
+  });
   return {
-    paths: [],
+    paths,
     fallback: 'blocking',
   };
 };
+
 //ctx=contexto
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params;
