@@ -8,6 +8,9 @@ import ptBR from 'date-fns/locale/pt-BR';
 import { api } from '../../services/apit';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 import styles from '../episodes/episode.module.scss';
+import { useContext } from 'react';
+import { usePlayer } from '../../contexts/PlayerContext';
+import Head from 'next/head';
 type Episodes = {
   id: string;
   title: string;
@@ -22,11 +25,14 @@ type Episodes = {
 type EpisodeProps = {
   episode: Episodes;
 };
-export default function Episode({ episode }) {
+export default function Episode({ episode }: EpisodeProps) {
   const router = useRouter();
-
+  const { play } = usePlayer();
   return (
     <div className={styles.episode}>
+      <Head>
+        <title>{episode.title}</title>
+      </Head>
       <div className={styles.thumbnailContainer}>
         <Link href="/">
           <button type="button">
@@ -39,7 +45,7 @@ export default function Episode({ episode }) {
           src={episode.thumbnail}
           objectFit="cover"
         />
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="Tocar episódio" />
         </button>
       </div>
