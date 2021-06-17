@@ -22,8 +22,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 ## 💻 Projetos
 
 O Chatty é um chat para atendimento de clientes em tempo real.
-PlantManager interface de marcar horario de regar suas platinhas
-Podcastr interface de podcast para ouvir seus podcasts
+PlantManager interface de marcar horario de regar suas platinhas.
+Podcastr interface de podcast para ouvir seus podcasts.
 
 ## 🚀 Como executar
 
